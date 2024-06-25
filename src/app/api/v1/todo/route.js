@@ -1,6 +1,6 @@
 import connectDB from "@/config/connectDB";
 import { NextResponse } from "next/server";
-import TodoModel from "@/models/todoModel";
+import TodoModel from "../../../../../src/models/TodoModel";
 
 //GET TODO
 export async function GET(req) {
@@ -25,7 +25,6 @@ export async function GET(req) {
 }
 
 //CREATE TODO || POST
-
 export async function POST(req) {
    const body = await req.json();
    try {
@@ -41,6 +40,38 @@ export async function POST(req) {
       console.log("error--->", error);
       return NextResponse.json(
          { mesasg: "Something went wrong in creating todo" },
+         {
+            status: 400,
+         }
+      );
+   }
+}
+
+//DELETE TODO || DELETE
+export async function DELETE(req) {
+   const id = req.nextUrl.searchParams.get("id");
+   try {
+      await connectDB();
+      const result = await TodoModel.findByIdAndDelete(id);
+
+      if (!result) {
+         return NextResponse.json(
+            { message: "Todo not found" },
+            {
+               status: 404,
+            }
+         );
+      }
+      return NextResponse.json(
+         { message: "Todo deleted successfully" },
+         {
+            status: 200,
+         }
+      );
+   } catch (error) {
+      console.log("error--->", error);
+      return NextResponse.json(
+         { message: "Something went wrong in deleting todo" },
          {
             status: 400,
          }
