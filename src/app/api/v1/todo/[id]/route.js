@@ -35,3 +35,27 @@ export async function PUT(req, { params }) {
       );
    }
 }
+
+//GET SINGLE TODO
+export async function GET(req, { params }) {
+   const { id } = params;
+
+   try {
+      await connectDB();
+      const singleTask = await TodoModel.findOne({ _id: id });
+      return NextResponse.json(
+         { data: singleTask },
+         {
+            status: 200,
+         }
+      );
+   } catch (error) {
+      console.log("error--->", error);
+      return NextResponse.json(
+         { mesasg: "Something went wrong in getting single task" },
+         {
+            status: 400,
+         }
+      );
+   }
+}

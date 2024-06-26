@@ -2,7 +2,7 @@ import connectDB from "@/config/connectDB";
 import { NextResponse } from "next/server";
 import TodoModel from "@/models/TodoModel";
 
-//GET TODO
+//GET ALL TODOs
 export async function GET(req) {
    try {
       await connectDB();
