@@ -73,7 +73,7 @@ export async function DELETE(req) {
       return NextResponse.json(
          { message: "Something went wrong in deleting todo" },
          {
-            status: 400,
+            status: 500,
          }
       );
    }

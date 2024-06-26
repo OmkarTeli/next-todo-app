@@ -16,10 +16,10 @@ const TaskCard = (props) => {
             {/* <button className="relative float-right mr-2.5 text-yellow-500 border-none w-9 h-9 cursor-pointer focus:outline-none">
                Delete
             </button> */}
-            <Link href={"/editTask/1"}>
+            <Link href={`/editTask/${props.id}`}>
                <HiPencilAlt size={24} className="text-green-600" />
             </Link>
-            <DeleteButton />
+            <DeleteButton id={props.id} />
          </div>
       </div>
    );

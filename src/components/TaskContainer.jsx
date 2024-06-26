@@ -22,7 +22,7 @@ const TaskContainer = async () => {
          {allTasks.data.map((task, index) => (
             <TaskCard
                key={index}
-               id={task.id}
+               id={task._id}
                title={task.title}
                description={task.description}
             />
