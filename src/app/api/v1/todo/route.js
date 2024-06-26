@@ -1,6 +1,6 @@
 import connectDB from "@/config/connectDB";
 import { NextResponse } from "next/server";
-import TodoModel from "../../../../../src/models/TodoModel";
+import TodoModel from "@/models/TodoModel";
 
 //GET TODO
 export async function GET(req) {
@@ -8,7 +8,7 @@ export async function GET(req) {
       await connectDB();
       const response = await TodoModel.find();
       return NextResponse.json(
-         { message: response },
+         { data: response },
          {
             status: 200,
          }
