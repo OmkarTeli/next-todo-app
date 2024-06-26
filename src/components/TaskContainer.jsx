@@ -10,7 +10,7 @@ const getData = async () => {
    //    });
    //    const tasks = await res.json();
    const { data } = await axios.get("http://localhost:3000/api/v1/todo");
-   console.log(data);
+   // console.log(data);
    return data;
 };
 const TaskContainer = async () => {

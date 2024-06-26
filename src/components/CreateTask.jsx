@@ -1,8 +1,9 @@
 "use client";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 const CreateTask = () => {
    // const [expanded, setExpanded] = useState(false);
-
+   const router = useRouter();
    const [task, setTask] = useState({
       title: "",
       description: "",
@@ -28,6 +29,8 @@ const CreateTask = () => {
          });
          console.log("Response : ", res);
          alert("Task created successfully");
+         router.refresh();
+         router.push("/");
       } catch (error) {
          console.log("Error in client side for creating todo");
       }
